@@ -1,0 +1,55 @@
+name: Snowflake CI/CD Database Deployment
+
+# ------------------------------------------------------------------------------
+# Context for Reviewers/Recruiters:
+# This file demonstrates knowledge of DevOps practices applied to Snowflake.
+# Rather than running SQL files manually in Snowsight, a Senior Engineer uses 
+# a pipeline. This workflow uses 'schemachange', a light-weight Python-based 
+# tool used specifically to manage Snowflake database migrations via code.
+# ------------------------------------------------------------------------------
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'migrations/**' # Only trigger if SQL migration scripts are changed
+
+jobs:
+  deploy-to-snowflake:
+    runs-name: Deploying Database Changes
+    runs-on: ubuntu-latest
+
+    env:
+      SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+      SNOWFLAKE_ROLE: SYSADMIN
+      SNOWFLAKE_WAREHOUSE: DEPLOYMENT_WH
+      SNOWFLAKE_DATABASE: PORTFOLIO_DB
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install schemachange
+        run: pip install schemachange
+
+      - name: Run schemachange via Python
+        env:
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+        run: |
+          echo "Deploying newly committed changes to Snowflake..."
+          schemachange \
+            -f migrations \
+            -a $SNOWFLAKE_ACCOUNT \
+            -u $SNOWFLAKE_USER \
+            -r $SNOWFLAKE_ROLE \
+            -w $SNOWFLAKE_WAREHOUSE \
+            -d $SNOWFLAKE_DATABASE \
+            -c $SNOWFLAKE_DATABASE.SCHEMACHANGE.CHANGE_HISTORY \
+            --create-change-history-table
