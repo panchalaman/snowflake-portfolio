@@ -1,6 +1,6 @@
 # ❄️ Snowflake Data Engineering Portfolio
 
-Welcome to my professional Data Engineering portfolio. I am a **Certified Snowflake Data Engineer**, and this repository serves as a comprehensive demonstration of my ability to design, build, and optimize enterprise-grade data platforms on the Snowflake Data Cloud.
+Welcome to my professional Data Engineering portfolio. This repository serves as a comprehensive demonstration of my ability to design, build, and optimize enterprise-grade data platforms on the Snowflake Data Cloud.
 
 ## 🎯 Objective
 This repository goes beyond simple syntax. It is engineered to demonstrate **architectural decision-making**, **cost-optimization**, **security-first design**, and **scalable pipeline orchestration**. Whether you are a technical recruiter, hiring manager, or principal engineer, this portfolio is structured to give you absolute confidence in my ability to deliver immediate value to your data organization.
