@@ -6,7 +6,7 @@ Welcome to my professional Data Engineering portfolio. This repository serves as
 This repository goes beyond simple syntax. It is engineered to demonstrate **architectural decision-making**, **cost-optimization**, **security-first design**, and **scalable pipeline orchestration**. Whether you are a technical recruiter, hiring manager, or principal engineer, this portfolio is structured to give you absolute confidence in my ability to deliver immediate value to your data organization.
 
 ## 🏆 Certifications
-* **SnowPro Certified Data Engineer**
+* **Professional Certificate: Snowflake Data Engineering**
 * Demonstrated proficiency in:
   * Real-time and batch data ingestion (Snowpipe, Snowpipe Streaming)
   * Complex data transformations (Streams, Tasks, Dynamic Tables)
